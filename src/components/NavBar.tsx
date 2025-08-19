@@ -1,14 +1,16 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 import logo from "../assets/react.svg";
 import { ColorModeButton } from "./ui/color-mode";
 
 const NavBar = () => {
 	return (
-		<HStack>
-			<Image src={logo} height={"10"} margin={"1"} />
-			Game Search
+		<Flex justify="space-between" align="center" p="2">
+			<Flex align="center" gap="2">
+				<Image src={logo} h="10" />
+				Game Search
+			</Flex>
 			<ColorModeButton />
-		</HStack>
+		</Flex>
 	);
 };
 
