@@ -25,7 +25,7 @@ const GameGrid = () => {
 			.catch((err) => {
 				setErrors(err.message);
 			});
-	});
+	}, []);
 
 	return (
 		<>
