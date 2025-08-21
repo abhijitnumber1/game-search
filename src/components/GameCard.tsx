@@ -9,12 +9,7 @@ interface Props {
 }
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card.Root
-			maxW="sm"
-			width={"300px"}
-			overflow="hidden"
-			marginBottom={"10px"}
-		>
+		<Card.Root>
 			<Image
 				src={getOptimizedImageUrl(game.background_image)}
 				alt={game.name}
