@@ -1,8 +1,12 @@
-import useGenres from "@/hooks/useGenres";
+import useGenres, { type Genres } from "@/hooks/useGenres";
 import getOptimizedImageUrl from "@/services/image-url";
-import { HStack, Image, List, Spinner, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, List, Spinner } from "@chakra-ui/react";
 
-const Genres = () => {
+interface Props {
+	selectedGenre: (genre: Genres) => void;
+}
+
+const Genre = ({ selectedGenre }: Props) => {
 	const { data, loading, error } = useGenres();
 	if (error) return null;
 	if (loading) return <Spinner />;
@@ -17,7 +21,13 @@ const Genres = () => {
 							borderRadius={8}
 							marginBottom={2}
 						/>
-						<Text fontSize="lg">{genre.name}</Text>
+						<Button
+							fontSize="lg"
+							variant="plain"
+							onClick={() => selectedGenre(genre)}
+						>
+							{genre.name}
+						</Button>
 					</HStack>
 				</List.Item>
 			))}
@@ -25,4 +35,4 @@ const Genres = () => {
 	);
 };
 
-export default Genres;
+export default Genre;
