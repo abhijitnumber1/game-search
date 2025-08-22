@@ -14,15 +14,15 @@ const GameGrid = () => {
 				{loading &&
 					skeleton.map((s) => {
 						return (
-							<GameCardContainer>
-								<GameSkeleton key={s} />
+							<GameCardContainer key={s}>
+								<GameSkeleton />
 							</GameCardContainer>
 						);
 					})}
 				{data.map((game) => {
 					return (
-						<GameCardContainer>
-							<GameCard key={game.id} game={game} />
+						<GameCardContainer key={game.id}>
+							<GameCard game={game} />
 						</GameCardContainer>
 					);
 				})}
