@@ -1,20 +1,31 @@
-import usePlatformSelector from "@/hooks/usePlatformSelector";
+import usePlatformSelector, {
+	type ParentPlatform,
+} from "@/hooks/usePlatformSelector";
 import { Button, Menu, Portal } from "@chakra-ui/react";
-
-const PlatformSelector = () => {
+interface Props {
+	selectedPlatform: ParentPlatform | null;
+	selectPlatform: (platform: ParentPlatform) => void;
+}
+const PlatformSelector = ({ selectPlatform, selectedPlatform }: Props) => {
 	const { data } = usePlatformSelector();
 	return (
 		<Menu.Root>
 			<Menu.Trigger asChild>
 				<Button variant="solid" size="sm">
-					Open
+					{selectedPlatform?.name || "Select Platform"}
 				</Button>
 			</Menu.Trigger>
 			<Portal>
 				<Menu.Positioner>
 					<Menu.Content>
 						{data.map((platform) => (
-							<Menu.Item key={platform.id} value={platform.slug}>
+							<Menu.Item
+								key={platform.id}
+								value={platform.slug}
+								onClick={() => {
+									selectPlatform(platform);
+								}}
+							>
 								{platform.name}
 							</Menu.Item>
 						))}

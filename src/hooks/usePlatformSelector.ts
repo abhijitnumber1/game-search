@@ -1,5 +1,5 @@
 import useData from "./useData";
-interface ParentPlatform {
+export interface ParentPlatform {
 	id: number;
 	name: string;
 	slug: string;
