@@ -1,9 +1,11 @@
 import useGenres from "@/hooks/useGenres";
 import getOptimizedImageUrl from "@/services/image-url";
-import { HStack, Image, List, Text } from "@chakra-ui/react";
+import { HStack, Image, List, Spinner, Text } from "@chakra-ui/react";
 
 const Genres = () => {
-	const { data } = useGenres();
+	const { data, loading, error } = useGenres();
+	if (error) return null;
+	if (loading) return <Spinner />;
 	return (
 		<List.Root gap="2" variant="plain" align="center">
 			{data.map((genre) => (
