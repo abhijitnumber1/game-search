@@ -13,7 +13,7 @@ const GameGrid = ({ selected_genre }: Props) => {
 	return (
 		<>
 			{error && <Text>{error}</Text>}
-			<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} padding="10px">
+			<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} paddingY={4}>
 				{loading &&
 					skeleton.map((s) => {
 						return (
