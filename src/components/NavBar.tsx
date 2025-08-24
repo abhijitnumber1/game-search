@@ -1,6 +1,7 @@
 import { Flex, Image } from "@chakra-ui/react";
 import logo from "../assets/react.svg";
 import { ColorModeButton } from "./ui/color-mode";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
 	return (
@@ -9,6 +10,7 @@ const NavBar = () => {
 				<Image src={logo} h="10" />
 				Game Search
 			</Flex>
+			<SearchInput />
 			<ColorModeButton />
 		</Flex>
 	);

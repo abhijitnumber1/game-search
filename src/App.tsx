@@ -36,12 +36,17 @@ function App() {
 					/>
 				</GridItem>
 			) : null}
-			<GridItem area={"main"}>
-				<HStack>
+			<GridItem
+				area={"main"}
+				display="flex"
+				flexDirection="column"
+				alignItems="center"
+			>
+				<HStack mb={4}>
 					<SortSelector
-						onSelectOrder={(order) => {
-							setGameQuery({ ...gameQuery, sortOrder: order });
-						}}
+						onSelectOrder={(order) =>
+							setGameQuery({ ...gameQuery, sortOrder: order })
+						}
 						selectedOrder={gameQuery?.sortOrder}
 					/>
 					<PlatformSelector
