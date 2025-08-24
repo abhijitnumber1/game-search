@@ -6,11 +6,12 @@ import { useState } from "react";
 import type { Genres } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { ParentPlatform } from "./hooks/usePlatformSelector";
-
+export interface GameQuery {
+	genre: Genres | null;
+	platform: ParentPlatform | null;
+}
 function App() {
-	const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
-	const [selectedPlatform, setSelectedPlatform] =
-		useState<ParentPlatform | null>(null);
+	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 	const isLg = useBreakpointValue({ base: false, lg: true });
 	return (
 		<Grid
@@ -26,18 +27,21 @@ function App() {
 
 			{isLg ? (
 				<GridItem area="aside" padding={5}>
-					<Genre selectedGenre={(genre) => setSelectedGenre(genre)} />
+					<Genre
+						selectedGenre={(genre) =>
+							setGameQuery({ ...gameQuery, genre })
+						}
+					/>
 				</GridItem>
 			) : null}
 			<GridItem area={"main"}>
 				<PlatformSelector
-					selectPlatform={(platform) => setSelectedPlatform(platform)}
-					selectedPlatform={selectedPlatform}
+					selectPlatform={(platform) =>
+						setGameQuery({ ...gameQuery, platform })
+					}
+					selectedPlatform={gameQuery.platform}
 				/>
-				<GameGrid
-					selected_genre={selectedGenre}
-					selected_platform={selectedPlatform}
-				/>
+				<GameGrid gameQuery={gameQuery} />
 			</GridItem>
 		</Grid>
 	);
