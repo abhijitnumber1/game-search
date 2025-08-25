@@ -14,22 +14,14 @@ const GameCard = ({ game }: Props) => {
 				src={getOptimizedImageUrl(game.background_image)}
 				alt={game.name}
 			/>
-			<Card.Body gap="2">
-				<Card.Title>{game.name}</Card.Title>
-				<HStack justifyContent={"space-between"}>
+			<Card.Body>
+				<HStack justifyContent={"space-between"} marginBottom={3}>
 					<PlatformIcons
 						plastforms={game.platforms.map((p) => p.platform)}
 					/>
 					<MetaCritic score={game.metacritic} />
 				</HStack>
-				<Text
-					textStyle="2xl"
-					fontWeight="medium"
-					letterSpacing="tight"
-					mt="2"
-				>
-					$450
-				</Text>
+				<Card.Title fontSize="2xl">{game.name}</Card.Title>
 			</Card.Body>
 		</Card.Root>
 	);

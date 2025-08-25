@@ -13,7 +13,7 @@ const GameGrid = ({ gameQuery }: Props) => {
 	return (
 		<>
 			{error && <Text>{error}</Text>}
-			<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} paddingY={4}>
+			<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={4}>
 				{loading &&
 					skeleton.map((s) => {
 						return (
