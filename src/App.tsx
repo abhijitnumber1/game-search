@@ -42,7 +42,12 @@ function App() {
 					/>
 				</GridItem>
 			) : null}
-			<GridItem area={"main"} display="flex" flexDirection="column">
+			<GridItem
+				area={"main"}
+				display="flex"
+				flexDirection="column"
+				padding={5}
+			>
 				<HeadingComponent gameQuery={gameQuery} />
 				<HStack mb={4}>
 					<SortSelector
