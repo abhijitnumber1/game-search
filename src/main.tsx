@@ -9,6 +9,9 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { ColorModeProvider } from "./components/ui/color-mode.tsx"; //
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+const queryClient = new QueryClient();
 const config = defineConfig({
 	theme: {
 		breakpoints: {
@@ -34,10 +37,13 @@ const config = defineConfig({
 const system = createSystem(defaultConfig, config);
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<ChakraProvider value={system}>
-			<ColorModeProvider>
-				<App />
-			</ColorModeProvider>
-		</ChakraProvider>
+		<QueryClientProvider client={queryClient}>
+			<ChakraProvider value={system}>
+				<ColorModeProvider>
+					<App />
+					<ReactQueryDevtools />
+				</ColorModeProvider>
+			</ChakraProvider>
+		</QueryClientProvider>
 	</StrictMode>
 );
