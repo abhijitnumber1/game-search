@@ -1,6 +1,6 @@
 import type { GameQuery } from "@/App";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import ApiClient, { type FetchResponse } from "@/services/api-client";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import ApiClient from "@/services/api-client";
 const apiClient = new ApiClient<Game>("/games");
 export interface Platform {
 	id: number;

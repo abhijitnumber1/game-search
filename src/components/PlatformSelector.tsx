@@ -1,18 +1,15 @@
-import usePlatformSelector, {
-	type ParentPlatform,
-} from "@/hooks/usePlatformSelector";
+import usePlatformSelector from "@/hooks/usePlatformSelector";
+import useGameQueryStore from "@/store";
 import { Button, Menu, Portal } from "@chakra-ui/react";
-interface Props {
-	selectedPlatform: ParentPlatform | null;
-	selectPlatform: (platform: ParentPlatform) => void;
-}
-const PlatformSelector = ({ selectPlatform, selectedPlatform }: Props) => {
+const PlatformSelector = () => {
+	const { gameQuery, setPlatform } = useGameQueryStore();
+
 	const { data } = usePlatformSelector();
 	return (
 		<Menu.Root>
 			<Menu.Trigger asChild>
 				<Button variant="outline" size="sm">
-					{selectedPlatform?.name || "Select Platform"}
+					{gameQuery.platform?.name || "Select Platform"}
 				</Button>
 			</Menu.Trigger>
 			<Portal>
@@ -23,7 +20,7 @@ const PlatformSelector = ({ selectPlatform, selectedPlatform }: Props) => {
 								key={platform.id}
 								value={platform.slug}
 								onClick={() => {
-									selectPlatform(platform);
+									setPlatform(platform);
 								}}
 							>
 								{platform.name}

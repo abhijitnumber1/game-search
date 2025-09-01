@@ -1,5 +1,6 @@
-import useGenres, { type Genres } from "@/hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import getOptimizedImageUrl from "@/services/image-url";
+import useGameQueryStore from "@/store";
 import {
 	Button,
 	Heading,
@@ -9,11 +10,8 @@ import {
 	Spinner,
 } from "@chakra-ui/react";
 
-interface Props {
-	selectedGenre: (genre: Genres) => void;
-}
-
-const Genre = ({ selectedGenre }: Props) => {
+const Genre = () => {
+	const setGenre = useGameQueryStore((s) => s.setGenre);
 	const { data, loading, error } = useGenres();
 	if (error) return null;
 	if (loading) return <Spinner />;
@@ -39,7 +37,7 @@ const Genre = ({ selectedGenre }: Props) => {
 								fontSize="lg"
 								variant="plain"
 								whiteSpace="normal"
-								onClick={() => selectedGenre(genre)}
+								onClick={() => setGenre(genre)}
 							>
 								{genre.name}
 							</Button>

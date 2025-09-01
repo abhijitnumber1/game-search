@@ -4,9 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
-interface Props {
-	searchGame: (name: string) => void;
-}
+import useGameQueryStore from "@/store";
 const searchSchema = z.object({
 	query: z
 		.string()
@@ -17,7 +15,8 @@ const searchSchema = z.object({
 });
 
 type SearchForm = z.infer<typeof searchSchema>;
-const SearchInput = ({ searchGame }: Props) => {
+const SearchInput = () => {
+	const setSearchText = useGameQueryStore((s) => s.setSearchText);
 	const {
 		register,
 		watch,
@@ -31,7 +30,8 @@ const SearchInput = ({ searchGame }: Props) => {
 
 	useEffect(() => {
 		if (query && query.length >= 3) {
-			searchGame(query);
+			console.log(query);
+			setSearchText(query);
 		}
 	}, [query]);
 
