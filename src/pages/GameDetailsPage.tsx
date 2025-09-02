@@ -1,5 +1,7 @@
+import GameDetail from "@/components/GameDetails";
+
 const GameDetailsPage = () => {
-	return <div>GameDetailsPage</div>;
+	return <GameDetail />;
 };
 
 export default GameDetailsPage;

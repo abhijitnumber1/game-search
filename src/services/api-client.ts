@@ -24,4 +24,10 @@ export default class ApiClient<T> {
 			.get<FetchResponse<T>>(this.endpoint, config)
 			.then((res) => res.data);
 	}
+
+	getOne(config?: AxiosRequestConfig) {
+		return apiInstance
+			.get<T>(this.endpoint, config)
+			.then((res) => res.data);
+	}
 }

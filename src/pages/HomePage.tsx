@@ -17,16 +17,11 @@ const HomePage = () => {
 			templateColumns={{ base: "1fr", lg: "240px 1fr" }}
 		>
 			{isLg ? (
-				<GridItem area="aside" padding={5}>
+				<GridItem area="aside">
 					<Genre />
 				</GridItem>
 			) : null}
-			<GridItem
-				area={"main"}
-				display="flex"
-				flexDirection="column"
-				padding={5}
-			>
+			<GridItem area={"main"} display="flex" flexDirection="column">
 				<HeadingComponent />
 				<HStack mb={4}>
 					<SortSelector />
