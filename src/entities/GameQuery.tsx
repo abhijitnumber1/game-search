@@ -1,5 +1,6 @@
-import type { Genres } from "./hooks/useGenres";
-import type { ParentPlatform } from "./hooks/usePlatformSelector";
+import type { Genres } from "./Genres";
+import type { ParentPlatform } from "./ParentPlatform";
+
 export interface GameQuery {
 	genre: Genres | null;
 	platform: ParentPlatform | null;

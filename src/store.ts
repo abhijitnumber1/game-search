@@ -1,13 +1,7 @@
-import type { Genres } from "./hooks/useGenres";
-import type { ParentPlatform } from "./hooks/usePlatformSelector";
+import type { GameQuery } from "./entities/GameQuery";
+import type { Genres } from "./entities/Genres";
+import type { ParentPlatform } from "./entities/ParentPlatform";
 import { create } from "zustand";
-
-interface GameQuery {
-	genre: Genres | null;
-	platform: ParentPlatform | null;
-	sortOrder: string | null;
-	searchGameText: string;
-}
 
 interface GameQueryStore {
 	gameQuery: GameQuery;
