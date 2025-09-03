@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import useGameQueryStore from "@/store";
+import { useNavigate } from "react-router-dom";
 const searchSchema = z.object({
 	query: z
 		.string()
@@ -16,6 +17,7 @@ const searchSchema = z.object({
 
 type SearchForm = z.infer<typeof searchSchema>;
 const SearchInput = () => {
+	const navigate = useNavigate();
 	const setSearchText = useGameQueryStore((s) => s.setSearchText);
 	const {
 		register,
@@ -32,6 +34,7 @@ const SearchInput = () => {
 		if (query && query.length >= 3) {
 			console.log(query);
 			setSearchText(query);
+			navigate("");
 		}
 	}, [query]);
 
